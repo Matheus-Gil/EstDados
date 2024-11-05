@@ -18,22 +18,22 @@ public class HashTable<K, V> {
 	 ***********/
 
     // Função de hash de divisão
-    public int hashDivisao(String texto) {
+    public int hashDivisao (String texto , int M) {
         int soma = 0;
         for (char c : texto.toCharArray()) {
             soma += (int) c;
         }
-        return soma % size;
+        return soma % M;
     }
 
     // Função de hashDJB2
-    public int hashDJB2(String texto) {
-        long hash = 5381;
-        for (char c : texto.toCharArray()) {
-            hash = ((hash << 5) + hash) + c; // hash * 33 + c
-        }
-        return (int) (hash % Integer.MAX_VALUE) % size;
-    }
+	public int hashDJB2 (String texto) {
+		long hash = 5381;
+		for ( char c : texto . toCharArray () ) {
+			hash = (( hash << 5) + hash ) + c ; // hash * 33 + c
+		}
+		return ( int ) ( hash % Integer . MAX_VALUE ) ;
+	}
 
 	/* TODO: Atualizar a função get(K key) para funcionar com texto. Rascunho da nova função getPosition() abaixo
 	Função getPosition alterada para melhor acomodar as duas funções de hashing
